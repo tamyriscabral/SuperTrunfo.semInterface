@@ -96,13 +96,13 @@ public class Baralho extends LinkedList<Carta> {
 	   	 	linha = leitorArquivoComBuffer.readLine();
 	   	 	
 			 while ( linha != null ) { 
-				 dadosDaCarta = linha.split(",");
+				 dadosDaCarta = linha.split(",");// lê a primeira linhha com os nomes dos atrtibutos
 			
-				 dadosDaCartaD = new Double[6];
+				 dadosDaCartaD = new Double[6]; // vetor dos dados dos atributos
 			  
 				try {
 					for (i=2; i<6; i++)
-						dadosDaCartaD[i]= Double.parseDouble(dadosDaCarta[i]);
+						dadosDaCartaD[i]= Double.parseDouble(dadosDaCarta[i]);//transforma os dados lidos em double
 					   
 					
 				} catch(NumberFormatException nfe) {
@@ -111,9 +111,11 @@ public class Baralho extends LinkedList<Carta> {
 				
 				for (int n=0; n<4; n++) {
 					 atributo[n] = new Atributo(atributos[n+2],dadosDaCartaD[n+2]);
+					//define cada atributo (os vetores pulam os dois primeiros porque esses são os códigos e o nome)
 				}
 				
-				this.add(new Carta(dadosDaCarta[0], dadosDaCarta[1], atributo[0], atributo[1], atributo[2], atributo[3]));
+				this.add(new Carta(dadosDaCarta[0], dadosDaCarta[1], atributo[0], atributo[1], atributo[2], atributo[3])); // define cada carta com
+				 //o código, nome e 4 atributos
 				
 				if (dadosDaCarta[6]== "true") {
 					boolean supertrunfo = true;
@@ -146,7 +148,7 @@ public class Baralho extends LinkedList<Carta> {
     						+"3-" + atributos[4] + "\n"
     						+"4-" + atributos[5] + "\n");
 
-        int opcao = leitor.nextInt();
+        int opcao = leitor.nextInt(); // dá a opção do jogador escolher com qual atributo quer jogar
        
     	switch (opcao) {
 	    	case 1:
@@ -159,7 +161,8 @@ public class Baralho extends LinkedList<Carta> {
 	    	case 4:
 	    		jogo.setAtributo(atributos[5]);
 	    		
-    	} leitor.close();
+    	} // manda o atributo para o objeto Jogo
+	    leitor.close();
     }
 
 
